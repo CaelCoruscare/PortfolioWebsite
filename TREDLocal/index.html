@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TRED Local</title>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <style>
+        #back {
+            background-repeat: repeat;
+            background-color: #FFFFFF;
+            color: black;
+            font-family: "courier";
+            font-weight: "bold";
+            font-size: 2vh;
+        }
+
+        #top {
+            text-align: center;
+        }
+
+        #header {
+            height: calc(10vw + 2vh);
+            font-size: 60px;
+            text-align: center;
+            background-color: rgba(87, 87, 87, 0.84);
+        }
+        
+    </style>
+</head>
+<body id="back">
+    
+    <div id="top">
+        
+    </div>
+
+    <div id="container">
+        <div id="displayArea"></div>
+    </div>
+
+    <script type="test"></script>
+
+    <script type="text/babel">
+
+        var HeaderButton= React.createClass({
+
+        getInitialState: function() {
+            console.log("hi");
+            return {hover: false}
+        },
+
+        toggleHover: function() {
+            console.log("hey");
+            this.setState({hover: !this.state.hover});
+        },
+
+        goTo: function() {
+            window.location.hash = this.props.hash;
+        },
+
+        render: function() {
+            
+            var buttonUnhovered = {
+                display: "block",
+                paddingLeft: "1.1em",
+                paddingRight: "1.1em",
+                borderRight: "1px solid #555",
+                background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#195c12))",
+            };
+
+            var buttonHovered = {
+                display: "block",
+                cursor: "pointer",
+                paddingLeft: "1.1em",
+                paddingRight: "1.1em",
+                backgroundColor: "#414143",
+                color: "#FFF",
+                borderRight: "1px solid #555"
+            };
+
+            var buttonStyle;
+
+            if (this.state.hover) {
+                buttonStyle = buttonHovered
+            } else {
+                buttonStyle = buttonUnhovered
+            }
+
+            return (
+                <li style={{float: "left", textAlign: "center", fontSize: "calc(80% + 1.7vh)"}}> 
+                    <a onMouseEnter={this.toggleHover} 
+                        onMouseLeave={this.toggleHover} 
+                        onClick={this.goTo}
+                        style={buttonStyle}
+                        >{this.props.text}</a>
+                </li>
+            );
+        }
+        });
+
+        var Header = React.createClass({
+
+            goHome: function() {
+                window.location.hash = "home";
+            },
+
+            render: function() {
+
+                var titleStyle = {
+                    padding: 10,
+                    backgroundColor: "#FFF",
+                    color: "#414143",
+                    textAlign: "left",
+                    fontFamily: "monospace",
+                    fontSize: "1.1vw",
+                    overflow: "hidden"
+                };
+
+                var barStyle = {
+                    listStyleType: "none", 
+                    border: "1px solid #555",
+                    borderRadius: "2px",
+                    margin: "0",
+                    padding: "0",
+                    float: "left",
+                    width: "calc(100% - 2px)",
+                    background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#1a7d0f))"
+                };
+
+                return (
+                    <div style={titleStyle}>
+                        <img onClick={this.goHome} src="TRED.jpg" style={{cursor: "pointer", height: "calc(2vw + 9vh)", marginTop: "-10px"}}></img>
+                        <h1 style={{marginTop: "1px", marginBottom: "8px", fontSize: "calc(60% + 1.4vh)", borderRadius: "0.4em", backgroundColor: "gray", width: "fit-content", paddingLeft:"0.45em", paddingRight:"0.45em"}}>Your Full Solution to Food Waste</h1>
+                        <ul style={barStyle}>
+                            <HeaderButton hash="home" text="Home"></HeaderButton>
+                            <HeaderButton hash="item0" text="Transform"></HeaderButton>
+                            <HeaderButton hash="item2" text="Reuse"></HeaderButton>
+                            <HeaderButton hash="item1" text="Distribute"></HeaderButton>
+                            <HeaderButton hash="item3" text="About"></HeaderButton>
+                            <HeaderButton hash="item4" text="Contact"></HeaderButton>
+                        </ul>
+                    </div>
+                );
+            }
+        });
+
+        var TitleIcon = React.createClass({
+            render: function() {
+
+                var titleStyle = {
+                    padding: 10,
+                    color: "#414143",
+                    textAlign: "center",
+                    fontFamily: "monospace",
+                    fontSize: "1.1vw",
+                    borderTopLeftRadius: "6px",
+                    borderTopRightRadius: "6px",
+                    background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#1a7d0f))"
+                };
+
+                return (
+                    <div style={titleStyle}>
+                        <h1>{this.props.title}</h1>
+                    </div>
+                );
+            }
+        });
+
+        var UnderIcon = React.createClass({
+            render: function() {
+
+                var titleStyle = {
+                    background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#1a7d0f))",
+                    color: "#414143",
+                    textAlign: "center",
+                    fontFamily: "monospace",
+                    width: "100%",
+                    height: "4vw",
+                    fontSize: "0.6vw",
+                    borderRadius: "8px"
+                };
+
+                return (
+                    <div style={titleStyle}>
+                        <h1 style={{padding: "1vw 0vw"}}>{this.props.desc}</h1>
+                    </div>
+                );
+            }
+        });
+
+        
+        var PortfolioIcon = React.createClass({
+            getInitialState: function() {
+                console.log("hi");
+                return {hover: false}
+            },
+
+            toggleHover: function() {
+                console.log("hey");
+                this.setState({hover: !this.state.hover})
+            },
+
+            render: function() {        
+                var portfolioBoxStyle = {
+                    padding: "1vw",
+                    display: "inline-block",
+                    width: "30%",
+                    fontFamily: "monospace"
+                };
+
+                var hoveredStyle = {
+                    padding: "1vw",
+                    display: "inline-block",
+                    width: "30%",
+                    backgroundColor: "green",
+                    fontFamily: "monospace",
+                    cursor: "pointer"
+                };
+
+                var styleUsed;
+
+                if (this.state.hover) {
+                    styleUsed = hoveredStyle
+                } else {
+                    styleUsed = portfolioBoxStyle
+                }
+
+
+                return (
+                    <div    onClick={this.props.toggleMenu.bind(null, this.props.project)} 
+                            style={styleUsed} 
+                            onMouseEnter={this.toggleHover} 
+                            onMouseLeave={this.toggleHover}>
+                        <TitleIcon title={this.props.title}></TitleIcon>
+                        <img src={this.props.image} style={{ width: "100%",
+                                                            height: "26vw",
+                                                            objectFit: "cover"}}></img>
+                        <UnderIcon desc={this.props.desc}></UnderIcon>
+                    </div>
+                );
+                
+            }
+        });
+
+        var TitleProject = React.createClass({
+            render: function() {
+
+                var titleStyle = {
+                    padding: 5,
+                    backgroundColor: "green",
+                    color: "aqua",
+                    textAlign: "left",
+                    fontFamily: "monospace",
+                    fontWeight: "bold",
+                    height: "12vw"
+                };
+
+                return (
+                    <div style={titleStyle}>
+                        <ReturnArrow toggleMenu={this.props.toggleMenu}></ReturnArrow>
+                        <div style={{marginRight: "12vw", 
+                                    verticalAlign: "middle", 
+                                    textAlign: "center", 
+                                    lineHeight: "12vw", 
+                                    fontSize: "6vw"}}>{this.props.title}</div>
+                    </div>
+                );
+            }
+        });
+
+        var ReturnArrow = React.createClass({
+            render: function() { 
+                return (                    
+                    <img src="./Return_Arrow.png" 
+                        onClick={this.props.toggleMenu} 
+                        style={{width:"10vh", height:"10vh", backgroundColor: "rgba(209, 101, 38, 0.6)"}}>
+                    </img>
+                       
+                );
+            }
+        });
+
+        var Project = React.createClass({
+            render: function() { 
+                return (
+                      <div style={{display:"block"}}>{this.props.explanation}</div>
+                );
+                /*
+                        <ReturnArrow toggleMenu={this.props.toggleMenu}></ReturnArrow>
+                        <img src={this.props.image}
+                            style={{width:"90vw", height: "45vw", objectFit: "contain"}}></img>*/
+            }
+        }); 
+        
+        var ButtonRandom = React.createClass({
+            
+            getInitialState: function() {
+                console.log("hi");
+                return {hover: false}
+            },
+
+            toggleHover: function() {
+                console.log("hey");
+                this.setState({hover: !this.state.hover})
+            },
+            
+            render: function() {
+
+                var buttonStyle = {
+                    backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))",
+                    borderRadius: "0.2vw",
+                    fontFamily: "Arial",
+                    color: "#ffffff",
+                    fontSize: "2vw",
+                    padding: "1vw 2vw 1vw 2vw",
+                    textDecoration: "none",
+                    width: "9vw",
+                    height: "2vw"
+                };
+
+                var hoveredStyle = {
+                    backgroundImage: "linear-gradient(to bottom, rgb(209, 140, 70), rgb(270, 100, 56))",
+                    borderRadius: "0.2vw",
+                    fontFamily: "Arial",
+                    textDecoration: "none",
+                    padding: "1vw 2vw 1vw 2vw",
+                    textDecoration: "none",
+                    fontSize: "2vw",
+                    width: "9vw",
+                    height: "2vw"
+                };
+
+                var styleUsed;
+
+                if (this.state.hover) {
+                    styleUsed = hoveredStyle
+                } else {
+                    styleUsed = buttonStyle
+                }
+
+                return (
+                    <div style={styleUsed} 
+                        onMouseEnter={this.toggleHover} 
+                        onMouseLeave={this.toggleHover}>Sign Up!</div>
+                );
+            }
+        });   
+
+        var Portfolio = React.createClass({
+            
+            componentWillMount: function() {
+                console.log('I was triggered during componentDidMount');
+            
+                if (window.location.hash != "#home")
+                {
+                    window.location.hash = "home";
+                }
+
+                this.setState({         
+                    projectToOpen: 0
+                });
+
+                window.addEventListener("hashchange", this.toggle, 0)
+
+                var w = window.innerWidth;
+                console.log('width' + w);
+            },
+
+            goBack: function() {
+                window.history.back();
+            },
+            
+            getInitialState: function() {
+                return {
+                    showMenu: true,
+                    projectToOpen: 0,
+                    currentHash: "home"
+                }
+            },
+
+            toggleMenu: function (num) {
+                console.log("AAA" + num);
+                if (num != 21 && num != null)
+                {
+
+                console.log("BBB" + num);
+                    this.setState({         
+                        projectToOpen: num,
+                        showMenu: false
+                    });
+                    window.location.hash = "#item" + num;
+                }
+                else
+                {   
+
+                console.log("CCC" + num);
+                    this.setState({        
+                        showMenu: true
+                    });
+                    window.location.hash = "home";
+                }
+            },
+
+            toggle: function () {
+                console.log("toggle " + window.location.hash);
+                if (this.state.currentHash != window.location.hash)
+                {
+                    if(window.location.hash != "#home")
+                    {
+                        var itemID = window.location.hash;
+                        itemID = itemID.substr(itemID.length - 1);
+                        itemID = parseInt(itemID);
+
+                        this.setState({         
+                            showMenu: false,
+                            projectToOpen: itemID
+                        });
+                        window.document.body.scrollTop = window.document.documentElement.scrollTop = 0;
+                    }
+                    else
+                    {
+                        this.setState({ 
+                            showMenu: true
+                        });
+                    }
+
+                    this.state.currentHash = window.location.hash;
+                }
+            },
+
+            render: function() {
+
+                let titles = [
+                    "Transform Applesauce", 
+                    "Rustic Foodboxes",
+                    "Onsite Composting"
+                    ];
+
+                let descriptions = [
+                    "Perfectly Imperfect Applesauce", 
+                    "Perfectly Imperfect Produce, Delivered",
+                    "Composting for Large Rural Institutions"
+                    ];
+
+                let imagesIcon = [
+                    "Apples.jpeg",
+                    "Produce.jpeg",
+                    "Compost.jpg"
+                    ];
+
+                let icons = [<div key={9} style={{height: "2vh"}}></div>];
+                for (let i = 0; i < 3; i++)
+                {
+                    icons.push(<PortfolioIcon key={i.toString()} desc={descriptions[i]} project={i} title={titles[i]} image={imagesIcon[i]} toggleMenu={this.toggleMenu}></PortfolioIcon>);
+                }
+
+                icons.push(<div>
+                                <h1>The Team:</h1>
+                                <img key={8} style = {{  padding: "3vh",
+                                            width: "90vw", 
+                                            objectFit: "contain"}} 
+                                    src={"Team.jpeg"}></img>
+                            </div>
+                );
+                            
+                let explanations = [
+                    /*--AppleSauce--*/
+                    <div style={{   width: "98vw", 
+                                    display: "flex", 
+                                    flexWrap: "wrap", 
+                                    flexDirection: "row",
+                                    color: "#414143",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                    }}>
+                        
+                        <img style={{   width: "49vw", 
+                                        objectFit: "contain", 
+                                        maxHeight: "60vh",
+                                        backgroundColor: "#544036",
+                                        marginTop: "1vh"}} 
+                            src={"Sauce.jpeg"}></img>
+                        
+                        <div style={{   width: "calc(49vw - 6vh)",
+                                        paddingLeft: "3vh",
+                                        paddingRight: "3vh",
+                                        marginTop: "1vh"}}>
+
+                            <div style={{   background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#2a9d2f))",
+                                            color: "#414143",
+                                            textAlign: "left",
+                                            padding: "3vh",
+                                            fontSize: "1vw",
+                                            lineHeight: "2.2vw",
+                                            width: "calc(49vw - 12vh)",
+                                            borderRadius: "8px"}}>
+                                <h1>Transform Applesauce</h1>
+                                <h2>Every year, Vermont Apple Orchards pick bushels of apples that 
+                                    are delicious but slightly bruised or have rough spots on their 
+                                    skin. These "Perfectly Imperfect" apples can't be sold in stores, 
+                                    and were thrown away until Transform Applesauce started buying them 
+                                    and making delicious, high quality maple cinnamon applesauce.
+                                    <br/><br/>
+                                    Follow us at: facebook.com/TREDLocal to see when & where our next 
+                                    selling event is.
+                                </h2>
+                            </div>
+                        </div>
+
+                        <iframe style={{padding: "5vh", height: "48vw", width: "80vw", maxWidth: "75vh", maxHeight: "42vh"}} 
+                                src={"https://www.youtube.com/embed/CZWhbzEG2S4"} frameBorder="0" allowFullScreen="true"></iframe>
+                    </div>
+                    ,
+                    /*--Rustic Foodboxes--*/
+                    <div style={{   width: "98vw", 
+                                    display: "flex", 
+                                    flexWrap: "wrap", 
+                                    flexDirection: "row",
+                                    color: "#414143",
+                                    alignItems: "center",
+                                    justifyContent: "center"}}>
+                        
+                        <img style={{   width: "49vw", 
+                                        objectFit: "contain", 
+                                        maxHeight: "60vh", 
+                                        backgroundColor: "#544036",
+                                        marginTop: "1vh"}} 
+                            src={"Box.jpeg"}></img>
+                        
+                        <div style={{   width: "calc(49vw - 6vh)",
+                                        paddingLeft: "3vh",
+                                        paddingRight: "3vh",
+                                        marginTop: "1vh"}}>
+
+                            <div style={{   background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#2a9d2f))",
+                                            color: "#414143",
+                                            textAlign: "left",
+                                            padding: "3vh",
+                                            fontSize: "1vw",
+                                            lineHeight: "2.2vw",
+                                            width: "calc(49vw - 12vh)",
+                                            borderRadius: "8px"}}>
+                                <h1>Rustic Foodboxes</h1>
+                                <h2>When farmers grow unusual fruits and veggies, they normally have to
+                                    throw them away. Named "Perfectly Imperfect Produce", these fruits & 
+                                    veggies include twisted carrots, lemons with bruised peels, and red 
+                                    apples with green spots. Rustic Foodboxes delivers these perfectly edible 
+                                    unusual characters to your front door at a reduced price, accompanied by 
+                                    recipes, and packaged in a handsome rustic box.
+                                </h2>
+                            </div>
+                        </div>
+
+                        <iframe style={{padding: "5vh", height: "48vw", width: "80vw", maxWidth: "75vh", maxHeight: "42vh"}} 
+                                src={"https://www.youtube.com/embed/rXj0Flndk5Y"} frameBorder="0" allowFullScreen="true"></iframe>
+                    
+                     </div>
+                    ,
+                    /*--Onsite Composting--*/
+                    <div style={{   width: "100%", 
+                                    alignItems: "center"
+                                    }}>
+                        
+                        <img style={{   width: "90%", 
+                                        objectFit: "contain", 
+                                        marginTop: "1vh", 
+                                        maxHeight: "60vh",
+                                        backgroundColor: "#544036"}} 
+                            src={"CompostPile.jpg"}></img>
+                        
+                        <div style={{   width: "90%",
+                                        paddingLeft: "3vh",
+                                        paddingRight: "3vh",
+                                        display: "inline-block",
+                                        margin: "3vh 0 3vh 0"}}>
+
+                            <div style={{   background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#2a9d2f))",
+                                            color: "#414143",
+                                            marginRight: "0px",
+                                            padding: "1vh 3vh 1vh 3vh",
+                                            fontSize: "1vw",
+                                            lineHeight: "2.2vw",
+                                            borderRadius: "8px"}}>
+                                <h1>Onsite Composting</h1>
+                                <h2>At Landmark College, the food waste of 400 students is thrown into a
+                                    landfill every day. We are working with Landmark to divert the food waste
+                                    into composting facilities on-campus in the woods next to the dining hall.
+                                    <br/><br/>This not only avoids the cost of trash removal, it also saves the college 
+                                    thousands of dollars every year by supplying their landscapers & gardening club with 
+                                    high quality fertilizer, and brings Landmark College in line with Vermont's
+                                    Act 148 Universal Recycling & Composting Law.
+                                </h2>
+                            </div>
+                        </div>
+
+                    </div>
+                    ,
+                    /*--About--*/
+                    <div style={{   width: "98vw", 
+                                    display: "flex", 
+                                    flexWrap: "wrap", 
+                                    flexDirection: "row",
+                                    color: "#414143",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                    }}>
+                        
+                        <img style={{   width: "90%", 
+                                        objectFit: "contain", 
+                                        maxHeight: "60vh",
+                                        backgroundColor: "#544036",
+                                        marginTop: "1vh"}} 
+                            src={"Team.jpeg"}></img>
+                        
+                        <div style={{   width: "100%",
+                                        padding: "3vh"}}>
+
+                            <div style={{   background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#2a9d2f))",
+                                            color: "#414143",
+                                            textAlign: "left",
+                                            padding: "1vh 3vh 1vh 3vh",
+                                            fontSize: "1vw",
+                                            lineHeight: "2.2vw",
+                                            borderRadius: "8px"}}>
+                                <h1>About Us</h1>
+                                <h2>The Landmark College spring 2018 Entrepreneurship class along with local partner, 
+                                Food Connects, worked with the Unilever Bright Future Project Accelerator to develop 
+                                a competitive, entrepreneurship approach to reducing Food Waste. Students applied 
+                                Entrepreneurship learning to define a need, market, and solution. In an applied learning 
+                                experience, students explored and developed the skills and steps to be an entrepreneur, 
+                                create and launch a project, build sustainability, and share the story. The result is the 
+                                launch of TRED Local - a Vermont based social enterprise that extends the reach of local 
+                                agriculture to disadvantaged populations building opportunities for farmers while improving 
+                                the natural environment in three ways:
+
+                                <br/><br/>1. Transform - apples into delicious sauce
+
+                                <br/><br/>2. Re-Use - food waste and build it into rich compost
+
+                                <br/><br/>3. Distribute – perfectly imperfect produce to new markets and low income individuals
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    ,
+                    /*--Contact Us--*/
+                    <div style={{   width: "98vw", 
+                                    display: "flex", 
+                                    flexWrap: "wrap", 
+                                    flexDirection: "row",
+                                    color: "#414143",
+                                    alignItems: "left",
+                                    justifyContent: "left"
+                                    }}>
+                        
+                        <div style={{   width: "fit-content",
+                                        padding: "3vh"}}>
+
+                            <div style={{   background: "-webkit-gradient(linear, left top, left bottom, from(#4dd151), to(#2a9d2f))",
+                                            color: "#414143",
+                                            textAlign: "left",
+                                            padding: "1vh 3vh 1vh 3vh",
+                                            fontSize: "1vw",
+                                            lineHeight: "2.2vw",
+                                            borderRadius: "8px"}}>
+                                <h1>Contact Us</h1>
+                                <h2>Facebook: <a href="facebook.com/TREDLocal">facebook.com/TREDLocal</a>
+                                
+                                <br/><br/>Twitter: <a href="facebook.com/TREDLocal">*Replace With Twitter Page*</a>
+
+                                <br/><br/>Email: tamarastenn@landmark.edu
+
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                ];
+                
+
+
+                let projects =[];
+                for (let i = 0; i < 8; i++)
+                {
+                    projects.push(<Project explanation={explanations[i]} key={(i+5).toString()} title={titles[i]} toggleMenu={this.goBack}></Project>);
+                }
+                
+
+                let portfolio = this.state.showMenu ?
+                                icons 
+                                : projects[this.state.projectToOpen];
+                            
+
+                return (
+                    <div style={{   width: "100%",
+                                    background: "-webkit-gradient(linear, left top, left bottom, from(rgb(226,226,226)), to(#9ea39e))",
+                                    boxShadow: "0px -2px 2px rgba(34,34,34,0.6)"}}>
+                        {portfolio}
+                    </div> 
+                );
+            }
+        });
+        
+
+        ReactDOM.render(
+            <div style={{textAlign: "center"}}> 
+                <Header></Header>
+                <Portfolio></Portfolio>
+            </div>
+            ,
+            displayArea
+        );
+
+        </script>
+</body>
+</html>
