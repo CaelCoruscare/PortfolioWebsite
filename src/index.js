@@ -21,6 +21,7 @@ import graph from "./Hunza_Graph.jpg";
 import turtle from "./Turtle.jpg";
 import board from "./Circadian_Board.jpg";
 import strip from "./Circadian_Strip.jpg";
+import face from "./CaelProfilePicMay2019.jpg";
 
 
 // If you want your app to work offline and load faster, you can change
@@ -180,7 +181,8 @@ class Portfolio extends React.Component {
                             {this.renderPortfolioButton(1)}  
                             {this.renderPortfolioButton(2)}  
                             {this.renderPortfolioButton(3)} 
-                            {this.renderPortfolioButton(4)}  
+                            {this.renderPortfolioButton(4)} 
+                            {this.renderPortfolioButton(5)}  
                         </div>
                     </div>
                 }
@@ -326,6 +328,20 @@ class Portfolio extends React.Component {
                             </div>
                         </div>
                         }
+                        { this.state.projNum === 5 && 
+                        <div>
+                            <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
+                                <p>I am working on this project to improve my Python skills while searching for a job in Austin.</p>
+                            </div>
+                            <img src={face} style={{padding: "1%", width: "calc(15vw + 60vh)"}}></img>
+                            <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
+        
+                                <p>You can find the ongoing code on <a href="https://github.com/CaelCoruscare/AutoRadioDJ">github</a>.</p>
+
+                                <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
+                            </div>
+                        </div>
+                        }
                     </div>
 
                 }         
@@ -343,10 +359,10 @@ class Portfolio extends React.Component {
   
   ReactDOM.render(
     <Portfolio 
-        hashes={["radio", "model_editor", "vr", "website", "circadian"]}
-        titles={["Radio Automation", "3D Model Editor", "3 VR Apps", "2 Budget Websites", "Circadian Strip"]} 
-        images={[radio, building, vr, tred, board]}
-        underTitles={["C++, Qt", "OpenGL, C", "C#, Unity3D, SteamVR", "React, Javascript, ES5, ES6", "Assembly, Embedded Systems"]}/>,
+        hashes={["radio", "model_editor", "vr", "website", "circadian", "facial_recognition"]}
+        titles={["Radio Automation", "3D Model Editor", "3 VR Apps", "2 Budget Websites", "Circadian Strip", "Facial Recognition (Ongoing)"]} 
+        images={[radio, building, vr, tred, board, face]}
+        underTitles={["C++, Qt", "OpenGL, C", "C#, Unity3D, SteamVR", "React, Javascript, ES5, ES6", "Assembly, Embedded Systems", "Python"]}/>,
     document.getElementById('root')
   );
   
