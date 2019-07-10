@@ -226,7 +226,7 @@ class Portfolio extends React.Component {
                                     <p>I wrote the project 2 years ago in C++ with the OpenGL libraries, however I had not yet properly made the jump from C to C++, so I essentially wrote this project in C and compiled it as C++.
                                     </p>
                                     
-                                    <p>You can find the code on my <a href="https://github.com/CaelCoruscare/AutoRadioDJ">github</a></p>
+                                    <p>Unfortunately, as this is a very old project, I kept it on Dropbox instead of Github, which was deleted. You can find an old (functional but difficult to set up) version on my <a href="https://github.com/CaelCoruscare/CaelCad">github</a></p>
 
                                     <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                                 </div>
@@ -250,7 +250,7 @@ class Portfolio extends React.Component {
                                     The coding portion of this project consisted of the movement system, and some basic ways for the people in the world to interact with the player.
                                 </p>
                                 
-                                <p>If you have a SteamVR headset you can download Painted World off my <a href="https://github.com/CaelCoruscare/AutoRadioDJ">dropbox</a>.</p>
+                                <p>If you have a SteamVR headset you can download Painted World off my <a href="https://www.dropbox.com/s/1uq5z52eftwq3hl/PaintedWorldPrototype.rar?dl=0">dropbox</a>.</p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                              </div>
@@ -265,7 +265,7 @@ class Portfolio extends React.Component {
                                 
                                 <p>When my team was getting ready to leave college, I passed the project on to younger students.</p>
 
-                                <p>If you have a SteamVR headset you can download the last dev build I made of Path To Hunza off my <a href="https://github.com/CaelCoruscare/AutoRadioDJ">dropbox</a>.</p>
+                                <p>If you have a SteamVR headset you can download the last dev build I made of Path To Hunza off my <a href="https://www.dropbox.com/s/g8fr9j9crqnq24n/HunzaPrototype.zip?dl=0">dropbox</a>.</p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                              </div>
@@ -278,7 +278,7 @@ class Portfolio extends React.Component {
                                     Most of the work for this project involved designing, programming, testing, and improving the way the user held and interacted wth objects, particularly tools.
                                 </p>
 
-                                <p>If you have a SteamVR headset you can download the proof of concept off my <a href="https://github.com/CaelCoruscare/AutoRadioDJ">dropbox</a>.</p>
+                                <p>If you have a SteamVR headset you can download the proof of concept off my <a href="https://www.dropbox.com/s/hfpbq130x274hvx/VR_Lab_Prototype.rar?dl=0">dropbox</a>.</p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                              </div>
@@ -295,7 +295,7 @@ class Portfolio extends React.Component {
                             <img src={tred} style={{padding: "1%", width: "calc(15vw + 60vh)"}}></img>
 
                             <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
-                                <p>The website has gone down, but you can find a copy at <a href="https://caelhansen.com/tredlocal">caelhansen.com/tredlocal</a>.
+                                <p>The website has gone down, but you can find the code at my github <a href="https://github.com/CaelCoruscare/TREDLocal">caelhansen.com/tredlocal</a>.
                                 </p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
@@ -307,7 +307,7 @@ class Portfolio extends React.Component {
                                 <p>The website you are currently on I wrote using the newer React ES6, compiled by npm.
                                 </p>
                                 
-                                <p>You can find the code for both websites on my <a href="https://github.com/CaelCoruscare/Websites">github</a>.
+                                <p>You can find the code for this website on my <a href="https://github.com/CaelCoruscare/PortfolioWebsite">github</a>.
                                 </p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
@@ -317,12 +317,12 @@ class Portfolio extends React.Component {
                         { this.state.projNum === 4 && 
                         <div>
                             <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
-                                <p>I created a sunstrip that changes color throughout the day to match the hue and intensity of the sun, to help my circadian clock.</p>
+                                <p>I created a sunstrip that changes color throughout the day to match the hue and intensity of the sun, to help my circadian rythm.</p>
                             </div>
                             <img src={strip} style={{padding: "1%", width: "calc(15vw + 60vh)"}}></img>
                             <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
         
-                                <p>You can find both the assembly code and my ongoing Arduino version on <a href="https://github.com/CaelCoruscare/AutoRadioDJ">github</a>.</p>
+                                <p>You can find both the assembly code and my ongoing Arduino version on <a href="https://github.com/CaelCoruscare/CircadianSunstrip">github</a>.</p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                             </div>
@@ -336,7 +336,7 @@ class Portfolio extends React.Component {
                             <img src={face} style={{padding: "1%", width: "calc(15vw + 60vh)"}}></img>
                             <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
         
-                                <p>You can find the ongoing code on <a href="https://github.com/CaelCoruscare/AutoRadioDJ">github</a>.</p>
+                                <p>You can find the code on my <a href="https://github.com/CaelCoruscare/FacialRecognition ">github</a>.</p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                             </div>
