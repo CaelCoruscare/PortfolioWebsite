@@ -22,6 +22,7 @@ import turtle from "./Turtle.jpg";
 import board from "./Circadian_Board.jpg";
 import strip from "./Circadian_Strip.jpg";
 import face from "./CaelProfilePicMay2019.jpg";
+import thisWebsite from "./This.png";
 
 
 // If you want your app to work offline and load faster, you can change
@@ -182,7 +183,6 @@ class Portfolio extends React.Component {
                             {this.renderPortfolioButton(2)}  
                             {this.renderPortfolioButton(3)} 
                             {this.renderPortfolioButton(4)} 
-                            {this.renderPortfolioButton(5)}  
                         </div>
                     </div>
                 }
@@ -295,16 +295,18 @@ class Portfolio extends React.Component {
                             <img src={tred} style={{padding: "1%", width: "calc(15vw + 60vh)"}}></img>
 
                             <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
-                                <p>The website has gone down, but you can find the code at my github <a href="https://github.com/CaelCoruscare/TREDLocal">caelhansen.com/tredlocal</a>.
+                                <p>The website has gone down, but you can find the code on my <a href="https://github.com/CaelCoruscare/TREDLocal">github</a>.
                                 </p>
 
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                             </div>
 
-                            <img src={tred} style={{padding: "1%", width: "calc(15vw + 60vh)"}}></img>
+                            <div style={{padding: "1%", backgroundColor: "gray", width: "min-content"}}>
+                                <img src={thisWebsite} style={{padding: "1%", width: "calc(15vw + 60vh)"}}></img>
+                            </div>
 
                             <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
-                                <p>The website you are currently on I wrote using the newer React ES6, compiled by npm.
+                                <p>I wrote the website you are currently on using the newer React ES6, compiled by npm.
                                 </p>
                                 
                                 <p>You can find the code for this website on my <a href="https://github.com/CaelCoruscare/PortfolioWebsite">github</a>.
@@ -328,7 +330,16 @@ class Portfolio extends React.Component {
                             </div>
                         </div>
                         }
-                        { this.state.projNum === 5 && 
+                       
+                    </div>
+
+                }         
+            </div>
+        );
+            
+    }
+}
+ /*{ this.state.projNum === 5 && 
                         <div>
                             <div style={{padding: "0.35%", fontSize: "1.2em", width: "60%", backgroundImage: "linear-gradient(to bottom, rgb(209, 101, 38), rgb(170, 80, 30))"}}>
                                 <p>I am working on this project to improve my Python skills while searching for a job in Austin.</p>
@@ -341,16 +352,7 @@ class Portfolio extends React.Component {
                                 <button style={{padding: "1%"}} onClick={ this.clickToMenu }>Return</button>
                             </div>
                         </div>
-                        }
-                    </div>
-
-                }         
-            </div>
-        );
-            
-    }
-}
-
+                        }*/
 
 
   
@@ -359,10 +361,10 @@ class Portfolio extends React.Component {
   
   ReactDOM.render(
     <Portfolio 
-        hashes={["radio", "model_editor", "vr", "website", "circadian", "facial_recognition"]}
-        titles={["Radio Automation", "3D Model Editor", "3 VR Apps", "2 Budget Websites", "Circadian Strip", "Facial Recognition (Ongoing)"]} 
-        images={[radio, building, vr, tred, board, face]}
-        underTitles={["C++, Qt", "OpenGL, C", "C#, Unity3D, SteamVR", "React, Javascript, ES5, ES6", "Assembly, Embedded Systems", "Python"]}/>,
+        hashes={["radio", "model_editor", "vr", "website", "circadian"]}
+        titles={["Radio Automation", "3D Model Editor", "3 VR Apps", "Budget Website & This", "Circadian Strip"]} 
+        images={[radio, building, vr, tred, board]}
+        underTitles={["C++, Qt", "OpenGL, C", "C#, Unity3D, SteamVR", "React, Javascript, ES5, ES6", "Assembly, Embedded Systems"]}/>,
     document.getElementById('root')
   );
   
